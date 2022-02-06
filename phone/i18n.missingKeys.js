@@ -1,7 +1,5 @@
 const args = process.argv.slice(2);
 
-console.log(args);
-
 const path = './src/locale/';
 
 const langs = ['bs', 'no', 'es', 'fr', 'pt', 'ptbr', 'sv', 'tr', "hu"];
@@ -73,5 +71,4 @@ const LoadDefault = () =>
       }
     }
   }
-  console.log(missingKeys);
 })();

@@ -16,8 +16,6 @@ export const useDialActions = (): IUseDialActions => {
 
         if (state !== 'hasValue') return;
 
-        console.log('callObj', callObj);
-
         setHistory((curHistory) => [callObj, ...curHistory]);
       },
     [],
