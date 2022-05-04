@@ -5,8 +5,8 @@
     "exportFunction": "myCheckerFunction"
   },
   "general": {
-    "useResourceIntegration": false,
-    "toggleKey": "f1",
+    "useResourceIntegration": true,
+    "toggleKey": "f10",
     "toggleCommand": "phone",
     "defaultLanguage": "en"
   },
@@ -15,16 +15,16 @@
     "badWords": ["esx"]
   },
   "database": {
-    "useIdentifierPrefix": false,
+    "useIdentifierPrefix": true,
     "playerTable": "users",
     "identifierColumn": "identifier",
-    "identifierType": "license",
+    "identifierType": "steam",
     "profileQueries": true,
     "phoneNumberColumn": "phone_number"
   },
   "debug": {
-    "level": "error",
-    "enabled": true,
-    "sentryEnabled": true
+    "level": "info",
+    "enabled": false,
+    "sentryEnabled": false
   }
 }
