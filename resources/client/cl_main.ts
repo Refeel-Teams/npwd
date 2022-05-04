@@ -126,8 +126,9 @@ async function togglePhone(): Promise<void> {
   await showPhone();
 }
 
-onNet(PhoneEvents.SEND_CREDENTIALS, (number: string) => {
+onNet(PhoneEvents.SEND_CREDENTIALS, (number: string, playerSource: number) => {
   sendMessage('SIMCARD', PhoneEvents.SET_NUMBER, number);
+  sendMessage('PHONE', PhoneEvents.SEND_PLAYER_SOURCE, playerSource);
 });
 
 on('onResourceStop', (resource: string) => {
@@ -163,6 +164,26 @@ RegisterNuiCB<{ keepGameFocus: boolean }>(
     cb({});
   },
 );
+
+/* * * * * * * * * * * * *
+ *
+ *  PhoneAsItem Export Checker
+ *
+ * * * * * * * * * * * * */
+if (config.PhoneAsItem.enabled) {
+  setTimeout(() => {
+    let doesExportExist = false;
+
+    const { exportResource, exportFunction } = config.PhoneAsItem;
+    emit(`__cfx_export_${exportResource}_${exportFunction}`, () => {
+      doesExportExist = true;
+    });
+
+    if (!doesExportExist) {
+      console.log('\n^1Incorrect PhoneAsItem configuration detected. Export does not exist.^0\n');
+    }
+  }, 100);
+}
 
 // setTick(async () => {
 //   while (config.SwimDestroy) {

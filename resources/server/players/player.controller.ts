@@ -1,6 +1,6 @@
 import { getSource } from '../utils/miscUtils';
 import PlayerService from './player.service';
-import { config } from '../server';
+import { config } from '../config';
 import { playerLogger } from './player.utils';
 import { PhoneEvents } from '../../../typings/phone';
 
@@ -8,7 +8,7 @@ onNet(PhoneEvents.FETCH_CREDENTIALS, () => {
   const src = getSource();
   const phoneNumber = PlayerService.getPlayer(src).getPhoneNumber();
 
-  emitNet(PhoneEvents.SEND_CREDENTIALS, src, phoneNumber);
+  emitNet(PhoneEvents.SEND_CREDENTIALS, src, phoneNumber, src);
 });
 
 /**
